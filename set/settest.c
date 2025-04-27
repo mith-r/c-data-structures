@@ -1,12 +1,9 @@
 /* 
- * settest.c - test program for CS50 set module
+ * settest.c - unit test for CS50 set module
  *
+ * Tests set_new, set_insert, set_find, set_print, set_iterate, set_delete
  *
- * This program is a "unit test" for the set module.
- * It does a decent job of testing the module, but is
- * not a complete test; it should test more corner cases.
- *
- * CS50, April 2025
+ * Mithun Rameshkumar, CS50, April 2025
  */
 
  #include <stdio.h>
@@ -15,48 +12,95 @@
  #include <stdbool.h>
  #include "set.h"
  
-
-int main(void) 
-{
-  set_t* set = NULL;
-
-  printf("Making a new Set");
-  set = set_new();
-
-  if (set == NULL) {
-    fprintf(stderr, "set_new failed for set\n");
-    return 1;
-  }
-
-  char *key = "Dartmouth";
-  int value = 1;
-
-  bool nullTest = false;
-  printf("\nTest with null set, good item, good key...\n");
-  nullTest = set_insert(NULL, key, &value);
-  printf("test with null key...\n");
-  nullTest = set_insert(set, NULL, &value); 
-  printf("test with null item...\n");
-  nullTest = set_insert(set, key, NULL);
-
-  printf("\nIf successful, boolean NullTest should equal 0!\n");
-  printf("NullTest = %d\n", nullTest);
-  
-  
-  printf("\nTesting normal adding and finding\n");
-  set_insert(set, key, &value);
-
-  if (set_find(set, key) == &value) {
-    printf("Successfully found!\n");
-  } else {
-    printf("Test failed\n");
-  }
-
-  printf("\nTest duplicate addition\n");
-
-  if (set_insert(set,key,&value) == true) {
-    printf("Failed\n");
-  } else {
-    printf("Success!\n");
-  }
-}
+ /* Helper functions */
+ static void itemprint(FILE* fp, const char* key, void* item);
+ static void itemcount(void* arg, const char* key, void* item);
+ static void itemdelete(void* item);
+ 
+ int main(void) 
+ {
+   printf("Testing set_new...\n");
+   set_t* set = set_new();
+   if (set == NULL) {
+     fprintf(stderr, "set_new failed\n");
+     return 1;
+   }
+ 
+   char* key1 = "Dartmouth";
+   char* key2 = "Hanover";
+   int val1 = 1;
+   int val2 = 2;
+ 
+   printf("\nTesting set_insert with NULL parameters...\n");
+   if (set_insert(NULL, key1, &val1) != false) printf("Error: should fail inserting into NULL set\n");
+   if (set_insert(set, NULL, &val1) != false) printf("Error: should fail inserting NULL key\n");
+   if (set_insert(set, key1, NULL) != false) printf("Error: should fail inserting NULL item\n");
+ 
+   printf("\nTesting normal set_insert...\n");
+   if (set_insert(set, key1, &val1) != true) printf("Error: should succeed inserting key1\n");
+   if (set_insert(set, key2, &val2) != true) printf("Error: should succeed inserting key2\n");
+ 
+   printf("\nTesting set_find...\n");
+   if (set_find(set, key1) == &val1) {
+     printf("Found key1 correctly.\n");
+   } else {
+     printf("Failed to find key1.\n");
+   }
+ 
+   if (set_find(set, key2) == &val2) {
+     printf("Found key2 correctly.\n");
+   } else {
+     printf("Failed to find key2.\n");
+   }
+ 
+   if (set_find(set, "Nonexistent") == NULL) {
+     printf("Correctly did not find nonexistent key.\n");
+   } else {
+     printf("Error: should not have found nonexistent key.\n");
+   }
+ 
+   printf("\nTesting duplicate key insertion...\n");
+   if (set_insert(set, key1, &val2) != false) {
+     printf("Error: should not allow duplicate key insert\n");
+   } else {
+     printf("Correctly rejected duplicate key.\n");
+   }
+ 
+   printf("\nTesting set_print...\n");
+   set_print(set, stdout, itemprint);
+   printf("\n");
+ 
+   printf("\nTesting set_iterate (counting items)...\n");
+   int count = 0;
+   set_iterate(set, &count, itemcount);
+   printf("Counted %d items. (Should be 2)\n", count);
+ 
+   printf("\nTesting set_delete...\n");
+   set_delete(set, itemdelete);
+   printf("Set deleted successfully.\n");
+ 
+   return 0;
+ }
+ 
+ /* Helper function to print one key-item pair */
+ static void itemprint(FILE* fp, const char* key, void* item)
+ {
+   if (fp != NULL && key != NULL && item != NULL) {
+     fprintf(fp, "[%s: %d]", key, *(int*)item);
+   }
+ }
+ 
+ /* Helper function to count items */
+ static void itemcount(void* arg, const char* key, void* item)
+ {
+   int* counter = arg;
+   if (counter != NULL && item != NULL) {
+     (*counter)++;
+   }
+ }
+ 
+ /* Helper function to delete an item */
+ static void itemdelete(void* item)
+ {
+   // Since we didn’t dynamically allocate the ints (val1, val2), nothing to free here
+ }
