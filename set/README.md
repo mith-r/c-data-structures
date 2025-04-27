@@ -50,7 +50,7 @@ No assumptions beyond those that are clear from the spec.
 * `set.h` - the interface
 * `set.c` - the implementation
 * `settest.c` - unit test driver
-* `testing.out` - result of `make test &> testing.out`
+* `testing.out` - result of `valgrind ./settest > testing.out 2>&1`
 
 
 ### Compilation

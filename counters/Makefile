@@ -1,9 +1,9 @@
-# Makefile for 'set' module
+# Makefile for 'counters' module
 #
 # Mithun Rameshkumar, CS50, April 2025
 # Adapted from Makefile for 'bag'module
 
-OBJS = settest.o set.o ../lib/file.o ../lib/mem.o 
+OBJS = counterstest.o counters.o ../lib/file.o ../lib/mem.o 
 LIBS =
 
 # uncomment the following to turn on verbose memory logging
@@ -15,11 +15,11 @@ MAKE = make
 # for memory-leak tests
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all
 
-settest: $(OBJS)
+counterstest: $(OBJS)
 	$(CC) $(CFLAGS) $^ $(LIBS) -o $@
 
-settest.o: set.h ../lib/file.h
-set.o: set.h
+counterstest.o: counters.h ../lib/file.h
+counters.o: counters.h
 ../lib/file.o: ../lib/file.h
 
 .PHONY: test valgrind clean
@@ -28,5 +28,5 @@ set.o: set.h
 clean:
 	rm -rf *.dSYM  # MacOS debugger info
 	rm -f *~ *.o
-	rm -f settest
+	rm -f counterstest
 	rm -f core
