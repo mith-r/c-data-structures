@@ -1,0 +1,13 @@
+Making a new Set
+Test with null set, good item, good key...
+test with null key...
+test with null item...
+
+If successful, boolean NullTest should equal false!
+NullTest = 0
+
+Testing normal adding and finding
+Successfully found!
+
+Test duplicate addition
+Success!
