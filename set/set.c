@@ -4,7 +4,7 @@
  * This file implements the CS50 set module "set.h" providing an 
  * unordered collection of unique key, item pairs
  * 
- * see set.h
+ * see set.h for more info
  * 
  */
 
@@ -18,8 +18,8 @@
 
 /**************** local types ****************/
 typedef struct setnode {
-    char* key; //pointer to key for this item
-    void* item; //pointer to data for this item
+    char *key; //pointer to key for this item
+    void *item; //pointer to data for this item
     struct setnode *next; //link to next node
 } setnode_t;
 
@@ -99,13 +99,15 @@ bool set_insert(set_t* set, const char* key, void* item)
 /**************** set_find() ****************/
 /* see set.h for description */
 void* set_find(set_t* set, const char* key)
-{
+{   
+    //NULL checks
     if (set == NULL || key == NULL) {
         return NULL;
     }
 
     setnode_t *node = set-> head;
 
+    //When found return the item, if not return NULL
     while (node) {
         if (strcmp(node->key, key) == 0) {
             return node->item;

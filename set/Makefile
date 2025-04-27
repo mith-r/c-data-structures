@@ -1,7 +1,7 @@
 # Makefile for 'set' module
 #
-# David Kotz, April 2016, 2017, 2019, 2021
-# updated by Xia Zhou, July 2016, 2018, January 2019
+# Mithun Rameshkumar, CS50, April 2025
+# Adapted from Makefile for 'bag'module
 
 OBJS = settest.o set.o ../lib/file.o ../lib/mem.o 
 LIBS =
