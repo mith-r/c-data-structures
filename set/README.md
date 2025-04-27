@@ -50,19 +50,14 @@ No assumptions beyond those that are clear from the spec.
 * `set.h` - the interface
 * `set.c` - the implementation
 * `settest.c` - unit test driver
-* `test.names` - test data
 * `testing.out` - result of `make test &> testing.out`
+
 
 ### Compilation
 
-To compile, simply `make set.o`.
+To compile, simply `make'
 
 ### Testing
 
-The `settest.c` program reads lines from stdin and stuffs them into a set, then pulls them back out.
-It tests a few error and edge cases.
-This test is somewhat minimal.
-A lot more could be done!
-
-To test, simply `make test`.
-See `testing.out` for details of testing and an example test run.
+Tested through valgrind and found no memory leaks. Also included testing.out which shows 
+everything works as intended. I have included the valgrind results in testing.out
