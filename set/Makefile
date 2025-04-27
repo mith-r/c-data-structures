@@ -1,8 +1,7 @@
 # Makefile for 'set' module
 #
-#Adapted from Makefile for 'set module
-# 
-#Mithun Rameshkumar April 24, 2025 CS50 Lab 3
+# David Kotz, April 2016, 2017, 2019, 2021
+# updated by Xia Zhou, July 2016, 2018, January 2019
 
 OBJS = settest.o set.o ../lib/file.o ../lib/mem.o 
 LIBS =
@@ -24,6 +23,7 @@ set.o: set.h
 ../lib/file.o: ../lib/file.h
 
 .PHONY: test valgrind clean
+
 
 clean:
 	rm -rf *.dSYM  # MacOS debugger info
