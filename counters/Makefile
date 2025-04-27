@@ -24,6 +24,8 @@ counters.o: counters.h
 
 .PHONY: test valgrind clean
 
+test: counterstest
+	./counterstest
 
 clean:
 	rm -rf *.dSYM  # MacOS debugger info

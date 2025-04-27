@@ -24,6 +24,9 @@ set.o: set.h
 
 .PHONY: test valgrind clean
 
+test: settest
+	./settest
+
 
 clean:
 	rm -rf *.dSYM  # MacOS debugger info
