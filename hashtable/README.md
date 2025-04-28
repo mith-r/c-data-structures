@@ -1,5 +1,7 @@
+# Mithun Rameshkumar
 # CS50 Lab 3
 ## CS50 Spring 2025
+
 
 ### hashtable
 
@@ -49,17 +51,17 @@ No assumptions beyond those that are clear from the spec.
 
 ### Files
 
-*	'Makefile' - compilation procedure
-*   'hash.c' - hash function
-*   'hash.h' - interface for hash function
-*	'hashtable.h' - the interface
-*	'hashtable.c' - the implementation
-*	'hashtabletest.c' - unit test driver
-*	'testing.out' - result of  `make test > testing.out`
+*	`Makefile` - compilation procedure
+*   `hash.c` - hash function
+*   `hash.h` - interface for hash function
+*	`hashtable.h` - the interface
+*	`hashtable.c` - the implementation
+*	`hashtabletest.c` - unit test driver
+*	`testing.out` - result of  `make test > testing.out`
 
 ### Compilation
 
-To compile, simply `make'
+To compile, simply `make`
 
 ### Testing
 

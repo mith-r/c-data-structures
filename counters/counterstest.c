@@ -17,22 +17,26 @@
  
  int main(void)
  {
+     //testing counters_new
      printf("Testing counters_new...\n");
      counters_t* ctrs = counters_new();
      if (ctrs == NULL) {
          fprintf(stderr, "counters_new failed\n");
          return 1;
      }
- 
+     
+     //testing counters_add with NULL parameters
      printf("\nTesting counters_add with NULL parameters...\n");
      if (counters_add(NULL, 5) != 0) printf("Error: should fail adding to NULL counters\n");
      if (counters_add(ctrs, -1) != 0) printf("Error: should fail adding negative key\n");
- 
+     
+     //testing normal counters_add
      printf("\nTesting normal counters_add...\n");
      if (counters_add(ctrs, 1) != 1) printf("Error: should insert key 1 with count 1\n");
      if (counters_add(ctrs, 2) != 1) printf("Error: should insert key 2 with count 1\n");
      if (counters_add(ctrs, 1) != 2) printf("Error: key 1 should increment to 2\n");
- 
+     
+     //testing counters_get
      printf("\nTesting counters_get...\n");
      if (counters_get(ctrs, 1) == 2) {
          printf("Found correct count for key 1.\n");
@@ -51,7 +55,8 @@
      } else {
          printf("Error: nonexistent key should return 0.\n");
      }
- 
+     
+     //Testing counters_set
      printf("\nTesting counters_set...\n");
      if (!counters_set(ctrs, 1, 10)) {
          printf("Error: should set key 1 to 10\n");
@@ -68,16 +73,19 @@
      } else {
          printf("Key 5 successfully set to 7.\n");
      }
- 
+     
+     //Testing counters_print
      printf("\nTesting counters_print...\n");
      counters_print(ctrs, stdout);
      printf("\n");
- 
+     
+     //Testing counters_iterate
      printf("\nTesting counters_iterate (counting items)...\n");
      int total = 0;
      counters_iterate(ctrs, &total, itemcount);
      printf("Counted %d keys.\n", total);
- 
+     
+     //Testing counters_delete
      printf("\nTesting counters_delete...\n");
      counters_delete(ctrs);
      printf("Counters deleted successfully.\n");

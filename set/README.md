@@ -1,3 +1,4 @@
+# Mithun Rameshkumar
 # CS50 Lab 3
 ## CS50 Spring 2025
 
@@ -55,7 +56,7 @@ No assumptions beyond those that are clear from the spec.
 
 ### Compilation
 
-To compile, simply `make'
+To compile, simply `make`
 
 ### Testing
 
