@@ -75,16 +75,9 @@ bool set_insert(set_t* set, const char* key, void* item)
     char *keyCopy = malloc(strlen(key) + 1);
     strcpy(keyCopy, key);
 
-    //checking for duplicates
-    setnode_t *node = set->head;
-
-    while (node) {
-        if (strcmp(node->key, keyCopy) == 0) {
-            mem_free(keyCopy);
-            return false;
-        
-        }
-        node = node->next;
+    if (set_find(set, key) != NULL){
+        free(keyCopy);
+        return false;
     }
 
     //allocate a new node to be added to list
@@ -123,15 +116,13 @@ void set_print(set_t* set, FILE* fp,
     void (*itemprint)(FILE* fp, const char* key, void* item) )
 {
     if (fp != NULL) {
-        if (set != NULL) {
+        if (set != NULL && itemprint != NULL) {
             fputc('{', fp);
             //Iterate over set
             for (setnode_t *node = set->head; node != NULL; node = node->next) {
                 //print current node
-                if (itemprint != NULL) { //print the node's key and item
-                    (*itemprint)(fp, node->key, node->item);
-                    fputc(',', fp);
-                }
+                (*itemprint)(fp, node->key, node->item);
+                fputc(',', fp);
             }
             fputc('}', fp);
         } else {

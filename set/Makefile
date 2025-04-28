@@ -27,6 +27,9 @@ set.o: set.h
 test: settest
 	./settest
 
+valgrind: settest
+	$(VALGRIND) ./settest
+
 
 clean:
 	rm -rf *.dSYM  # MacOS debugger info
