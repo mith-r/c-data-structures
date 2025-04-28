@@ -28,17 +28,19 @@
  
    char* key1 = "Dartmouth";
    char* key2 = "Hanover";
-   int val1 = 1;
-   int val2 = 2;
+   int* val1 = malloc(sizeof(int));
+   int* val2 = malloc(sizeof(int));
+   *val1 = 1;
+   *val1 = 2;
  
    printf("\nTesting set_insert with NULL parameters...\n");
-   if (set_insert(NULL, key1, &val1) != false) printf("Error: should fail inserting into NULL set\n");
-   if (set_insert(set, NULL, &val1) != false) printf("Error: should fail inserting NULL key\n");
+   if (set_insert(NULL, key1, val1) != false) printf("Error: should fail inserting into NULL set\n");
+   if (set_insert(set, NULL, val1) != false) printf("Error: should fail inserting NULL key\n");
    if (set_insert(set, key1, NULL) != false) printf("Error: should fail inserting NULL item\n");
  
    printf("\nTesting normal set_insert...\n");
-   if (set_insert(set, key1, &val1) != true) printf("Error: should succeed inserting key1\n");
-   if (set_insert(set, key2, &val2) != true) printf("Error: should succeed inserting key2\n");
+   if (set_insert(set, key1, val1) != true) printf("Error: should succeed inserting key1\n");
+   if (set_insert(set, key2, val2) != true) printf("Error: should succeed inserting key2\n");
  
    printf("\nTesting set_find...\n");
    if (set_find(set, key1) == &val1) {
@@ -47,7 +49,7 @@
      printf("Failed to find key1.\n");
    }
  
-   if (set_find(set, key2) == &val2) {
+   if (set_find(set, key2) == val2) {
      printf("Found key2 correctly.\n");
    } else {
      printf("Failed to find key2.\n");
@@ -60,7 +62,7 @@
    }
  
    printf("\nTesting duplicate key insertion...\n");
-   if (set_insert(set, key1, &val2) != false) {
+   if (set_insert(set, key1, val2) != false) {
      printf("Error: should not allow duplicate key insert\n");
    } else {
      printf("Correctly rejected duplicate key.\n");
@@ -102,5 +104,9 @@
  /* Helper function to delete an item */
  static void itemdelete(void* item)
  {
-   // Since we didn’t dynamically allocate the ints (val1, val2), nothing to free here
+   if (item != NULL) {
+    free(item);
+   }
  }
+
+ 

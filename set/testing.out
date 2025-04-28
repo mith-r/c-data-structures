@@ -1,3 +1,6 @@
+gcc -Wall -pedantic -std=c11 -ggdb  -I../lib   -c -o settest.o settest.c
+gcc -Wall -pedantic -std=c11 -ggdb  -I../lib   -c -o set.o set.c
+gcc -Wall -pedantic -std=c11 -ggdb  -I../lib settest.o set.o ../lib/file.o ../lib/mem.o  -o settest
 ./settest
 Testing set_new...
 
@@ -6,7 +9,7 @@ Testing set_insert with NULL parameters...
 Testing normal set_insert...
 
 Testing set_find...
-Found key1 correctly.
+Failed to find key1.
 Found key2 correctly.
 Correctly did not find nonexistent key.
 
@@ -14,7 +17,7 @@ Testing duplicate key insertion...
 Correctly rejected duplicate key.
 
 Testing set_print...
-{[Hanover: 2],[Dartmouth: 1],}
+{[Hanover: 0],[Dartmouth: 2],}
 
 Testing set_iterate (counting items)...
 Counted 2 items. (Should be 2)

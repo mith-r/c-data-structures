@@ -1,0 +1,33 @@
+./hashtabletest
+Testing hashtable_new...
+
+Testing hashtable_insert with NULL parameters...
+
+Testing normal hashtable_insert...
+
+Testing hashtable_find...
+Found key1 correctly.
+Found key2 correctly.
+Correctly did not find nonexistent key.
+
+Testing duplicate key insertion...
+Correctly rejected duplicate key.
+
+Testing hashtable_print...
+Slot 0:{}
+Slot 1:{}
+Slot 2:{}
+Slot 3:{[Dartmouth: 1],}
+Slot 4:{}
+Slot 5:{}
+Slot 6:{}
+Slot 7:{}
+Slot 8:{[Hanover: 2],}
+Slot 9:{}
+
+
+Testing hashtable_iterate (counting items)...
+Counted 2 items. (Should be 2)
+
+Testing hashtable_delete...
+Hashtable deleted successfully.

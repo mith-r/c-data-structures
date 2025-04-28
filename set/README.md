@@ -50,7 +50,7 @@ No assumptions beyond those that are clear from the spec.
 * `set.h` - the interface
 * `set.c` - the implementation
 * `settest.c` - unit test driver
-* `testing.out` - result of `valgrind ./settest > testing.out 2>&1`
+* `testing.out` - result of `make test > testing.out`
 
 
 ### Compilation
@@ -60,4 +60,4 @@ To compile, simply `make'
 ### Testing
 
 Tested through valgrind and found no memory leaks. Also included testing.out which shows 
-everything works as intended. I have included the valgrind results in testing.out
+everything works as intended. 

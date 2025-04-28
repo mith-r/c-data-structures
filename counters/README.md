@@ -52,7 +52,7 @@ No assumptions beyond those that are clear from the spec.
 * `counters.h` - the interface
 * `counters.c` - the implementation
 * `counters.c` - unit test driver
-* `testing.out` - result of `valgrind ./counterstest > testing.out 2>&1`
+* `testing.out` - result of `make test > testing.out`
 
 
 ### Compilation
@@ -62,4 +62,4 @@ To compile, simply `make'
 ### Testing
 
 Tested through valgrind and found no memory leaks. Also included testing.out which shows 
-everything works as intended. I have included the valgrind results in testing.out
+everything works as intended. 
