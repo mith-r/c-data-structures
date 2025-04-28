@@ -19,6 +19,7 @@
  
  int main(void) 
  {
+   //Testing set_new
    printf("Testing set_new...\n");
    set_t* set = set_new();
    if (set == NULL) {
@@ -32,23 +33,26 @@
    int* val2 = malloc(sizeof(int));
    *val1 = 1;
    *val1 = 2;
- 
+   
+   //Testing set_insert with NULL parameters
    printf("\nTesting set_insert with NULL parameters...\n");
    if (set_insert(NULL, key1, val1) != false) printf("Error: should fail inserting into NULL set\n");
    if (set_insert(set, NULL, val1) != false) printf("Error: should fail inserting NULL key\n");
    if (set_insert(set, key1, NULL) != false) printf("Error: should fail inserting NULL item\n");
- 
+   
+   //Testing normal set_insert
    printf("\nTesting normal set_insert...\n");
    if (set_insert(set, key1, val1) != true) printf("Error: should succeed inserting key1\n");
    if (set_insert(set, key2, val2) != true) printf("Error: should succeed inserting key2\n");
- 
+   
+   //Testing set_find
    printf("\nTesting set_find...\n");
    if (set_find(set, key1) == &val1) {
      printf("Found key1 correctly.\n");
    } else {
      printf("Failed to find key1.\n");
    }
- 
+
    if (set_find(set, key2) == val2) {
      printf("Found key2 correctly.\n");
    } else {
@@ -61,22 +65,26 @@
      printf("Error: should not have found nonexistent key.\n");
    }
  
+   //Testing duplicate key insertion
    printf("\nTesting duplicate key insertion...\n");
    if (set_insert(set, key1, val2) != false) {
      printf("Error: should not allow duplicate key insert\n");
    } else {
      printf("Correctly rejected duplicate key.\n");
    }
- 
+   
+   //Testing set_print
    printf("\nTesting set_print...\n");
    set_print(set, stdout, itemprint);
    printf("\n");
- 
+   
+   //Testing set_iterate
    printf("\nTesting set_iterate (counting items)...\n");
    int count = 0;
    set_iterate(set, &count, itemcount);
    printf("Counted %d items. (Should be 2)\n", count);
- 
+   
+   //Testing set_delete
    printf("\nTesting set_delete...\n");
    set_delete(set, itemdelete);
    printf("Set deleted successfully.\n");
