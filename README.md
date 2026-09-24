@@ -18,9 +18,10 @@ Run `make` from the repository root. The original code and Makefiles were
 developed in Dartmouth's CS50 Linux environment; tests and build behavior have
 not been revalidated as part of this repository restoration.
 
-## Restored history
+## History
 
-`main` starts from the final `submit3` submission. All original commit IDs,
-authors, and timestamps are preserved, including the original `submit3` branch.
-The former main branch is retained as `archive/original-main`. This README is
-a new restoration commit.
+`main` contains the final Lab 3 submission, with implementation, tests, and
+documentation organized into focused commits. Split changes retain their
+original commit timestamps. The original `submit3` branch and `archive/`
+branches preserve the original commit IDs and authorship, including the main
+branch before reorganization. Documentation updates are dated when made.
