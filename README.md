@@ -1,4 +1,26 @@
-# Mithun Rameshkumar
-## COSC 50 Spring 2025, Lab 3
+# C Data Structures
 
-Github username: mith-r
+Mithun Rameshkumar (`mith-r`) · Dartmouth CS50 · Spring 2025, Lab 3
+
+Implementations of four data structures in C:
+
+- `bag/`: an unordered collection of items.
+- `set/`: a collection of unique string keys and associated items.
+- `counters/`: integer-keyed counters.
+- `hashtable/`: a hash table of string keys and associated items.
+
+`lib/` contains the course's file and memory utilities. Each data-structure
+folder includes its interface, implementation, test program, and README.
+
+## Build
+
+Run `make` from the repository root. The original code and Makefiles were
+developed in Dartmouth's CS50 Linux environment; tests and build behavior have
+not been revalidated as part of this repository restoration.
+
+## Restored history
+
+`main` starts from the final `submit3` submission. All original commit IDs,
+authors, and timestamps are preserved, including the original `submit3` branch.
+The former main branch is retained as `archive/original-main`. This README is
+a new restoration commit.
