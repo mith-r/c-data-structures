@@ -23,5 +23,5 @@ not been revalidated as part of this repository restoration.
 `main` contains the final Lab 3 submission, with implementation, tests, and
 documentation organized into focused commits. Split changes retain their
 original commit timestamps. The original `submit3` branch and `archive/`
-branches preserve the original commit IDs and authorship, including the main
-branch before reorganization. Documentation updates are dated when made.
+branches preserve the submission history and authorship, including the main branch
+before reorganization. Author emails have been corrected to link to `mith-r`. Documentation updates are dated when made.
